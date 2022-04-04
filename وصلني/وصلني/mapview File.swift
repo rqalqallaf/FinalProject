@@ -19,11 +19,11 @@ struct MapView: UIViewRepresentable {
         let coordinate = CLLocationCoordinate2D(latitude: -33.1, longitude: 74)
         
         let map = MKMapView()
-        map.setRegion(MKCoordinateRegion(center: coordinate,
-                                         span: MKCoordinateSpan(latitudeDelta: 0.7,
-                                                                longitudeDelta: 0.7)),
-                      animated: true
-        )
+//        map.setRegion(MKCoordinateRegion(center: coordinate,
+//                                         span: MKCoordinateSpan(latitudeDelta: 0.7,
+//                                                                longitudeDelta: 0.7)),
+//                      animated: true
+//        )
         view.addSubview(map)
         
         map.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +34,9 @@ struct MapView: UIViewRepresentable {
             map.centerYAnchor.constraint(equalTo: view.centerYAnchor)
          ])
         
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        map.addAnnotation(pin)
             
     
         return view

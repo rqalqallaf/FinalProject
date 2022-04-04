@@ -11,8 +11,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                MapView()
-                    .frame(width: 300, height: 300, alignment: .center)
+                GeometryReader { proxy in
+                    MapView()
+                        .frame(width: proxy.size.width,
+                               height: proxy.size.height,
+                               alignment: .center)
+                }
             }
             .navigationTitle("Malls Map")
         }
@@ -22,5 +26,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
     }
 }
